@@ -70,7 +70,7 @@ This project includes a `.prettierrc.yaml` file in the root directory. This file
 1.  **Install the Extension:**
     *   Open Visual Studio Code.
     *   Go to the Extensions view (you can use the shortcut `Ctrl+Shift+X` or `Cmd+Shift+X`).
-    *   Search for **"Prettier - Code formatter"** (by Esben Petersen) and click "Install".
+    *   Search for **"Prettier - Code formatter"** (by Prettier) and click "Install".
 2.  **How it Works:**
     *   Once installed, the Prettier extension automatically detects and uses the settings from the `.prettierrc.yaml` file in this project.
 3.  **Formatting Files:**
