@@ -199,3 +199,24 @@ footer {
     line-height: 1.25rem; /* M3 Label Large line height: 20sp */
     color: var(--md-sys-color-on-surface-variant);
 }
+
+
+/* Beta Tag Styling */
+.beta-tag {
+    font-size: 0.5em; /* M3 Label Small or similar */
+    font-weight: 500;
+    color: var(--md-sys-color-on-primary-container);
+    background-color: var(--md-sys-color-primary-container);
+    padding: 2px 6px;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    vertical-align: middle; /* Align with heading text */
+    margin-left: 8px;
+}
+
+/* Advice Prompt Styling */
+.advice-prompt {
+    font-size: 0.9em; /* M3 Label Large */
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: 16px; /* Space before the cards */
+    text-align: center;
+}
