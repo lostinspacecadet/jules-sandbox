@@ -171,8 +171,8 @@ main {
 }
 
 .card-back {
-    background-color: var(--md-sys-color-surface-container); /* Slightly different surface for back */
-    color: var(--md-sys-color-on-surface-variant); /* Different text color for back for variety */
+    background-color: var(--md-sys-color-tertiary-container);
+    color: var(--md-sys-color-on-tertiary-container);
     transform: rotateY(180deg);
 }
 
@@ -194,7 +194,6 @@ main {
 footer {
     margin-top: 48px;
     padding-top: 24px;
-    border-top: 1px solid var(--md-sys-color-outline);
     font-size: 0.875rem; /* M3 Label Large size: 14sp */
     line-height: 1.25rem; /* M3 Label Large line height: 20sp */
     color: var(--md-sys-color-on-surface-variant);
@@ -215,8 +214,11 @@ footer {
 
 /* Advice Prompt Styling */
 .advice-prompt {
-    font-size: 0.9em; /* M3 Label Large */
+    font-size: 1rem; /* M3 Body Large - making it same as card text for consistency in header */
+    font-weight: 400;
+    line-height: 1.5rem;
     color: var(--md-sys-color-on-surface-variant);
-    margin-bottom: 16px; /* Space before the cards */
-    text-align: center;
+    margin-top: 8px; /* Space after the preceding paragraph */
+    margin-bottom: 24px; /* More space before main content starts if header ends here */
+    text-align: center; /* Explicitly set, though header inherits */
 }
