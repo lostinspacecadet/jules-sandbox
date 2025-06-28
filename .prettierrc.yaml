@@ -1,0 +1,25 @@
+# .prettierrc.yaml
+# Global Prettier settings
+printWidth: 80
+tabWidth: 2
+useTabs: false # Use spaces instead of tabs
+
+# Settings primarily for JavaScript/TypeScript, included for general project consistency
+# should other JS/TS files be added later. They don't negatively impact YAML.
+singleQuote: true
+trailingComma: "es5" # Add trailing commas where valid in ES5 (objects, arrays, etc.)
+
+# Specific configurations for YAML files
+overrides:
+  - files: "*.yaml"
+    options:
+      # 'preserve' respects your manual line breaks and block scalar styles (like | or >).
+      # 'always' would attempt to wrap prose even if not in a block scalar (can be disruptive in YAML).
+      # 'never' would not wrap prose at all.
+      # For 'cards.yaml' where readability and manual control of text blocks are key,
+      # 'preserve' is generally the best default when printWidth is also set.
+      proseWrap: "preserve"
+      # Ensure YAML uses 2 spaces for indentation, which is standard.
+      tabWidth: 2
+      # singleQuote for YAML strings is not a standard Prettier YAML option,
+      # it defaults to plain style where possible, or double quotes if needed.
