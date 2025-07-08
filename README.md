@@ -63,46 +63,7 @@ The content for the cards is stored in \`ally-cards/assets/cards.yaml\`. This fi
 **Contributing to Card Data:**
 When adding or editing cards, try to maintain the existing format. For a good editing experience in VS Code, consider installing:
 -   **YAML by Red Hat:** For YAML validation and language support.
-## Code Formatting with Prettier
-### Using Prettier for Consistent Formatting
-This project includes a `.prettierrc.yaml` file in the root directory. This file contains settings that the Prettier code formatter uses to ensure code (especially `cards.yaml`) is styled consistently. Using Prettier helps maintain readability and reduces formatting inconsistencies in contributions.
-**To use Prettier in Visual Studio Code:**
-1.  **Install the Extension:**
-    *   Open Visual Studio Code.
-    *   Go to the Extensions view (you can use the shortcut `Ctrl+Shift+X` or `Cmd+Shift+X`).
-    *   Search for **"Prettier - Code formatter"** (by Prettier) and click "Install".
-2.  **How it Works:**
-    *   Once installed, the Prettier extension automatically detects and uses the settings from the `.prettierrc.yaml` file in this project.
-3.  **Formatting Files:**
-    *   **Manual Formatting:** You can format the currently open file by right-clicking anywhere in the editor and selecting **"Format Document"**. If VS Code asks you to choose a default formatter for that file type, select "Prettier - Code formatter".
-    *   **Format on Save (Recommended):** For automatic formatting every time you save a file:
-        1.  Open VS Code Settings:
-            *   On Windows/Linux: File > Preferences > Settings
-            *   On macOS: Code > Preferences > Settings
-            *   Or use the shortcut `Ctrl+,` (or `Cmd+,`).
-        2.  Search for **"Format On Save"** in the settings search bar and ensure the checkbox is ticked.
-        3.  To ensure Prettier is used for specific file types without being prompted, you can set it as the default formatter. Search for **"Default Formatter"** in settings. While you can set a global default, it's often better to configure it per language in your VS Code `settings.json` file. You can open this file by opening the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and typing "Preferences: Open User Settings (JSON)". Then, add or modify the following:
-            ```json
-            {
-                // ...your other settings...
-                "editor.formatOnSave": true,
-                "[yaml]": {
-                    "editor.defaultFormatter": "esbenp.prettier-vscode"
-                },
-                "[javascript]": { // Optional: for script.js
-                    "editor.defaultFormatter": "esbenp.prettier-vscode"
-                },
-                "[css]": {    // Optional: for style.css
-                    "editor.defaultFormatter": "esbenp.prettier-vscode"
-                },
-                "[html]": {   // Optional: for index.html
-                    "editor.defaultFormatter": "esbenp.prettier-vscode"
-                }
-                // ...
-            }
-            ```
-            This ensures that when you save a YAML, JavaScript, CSS, or HTML file, Prettier will automatically format it according to the rules in `.prettierrc.yaml` (for global settings like print width) and Prettier's own sensible defaults for those languages.
-By following these steps, you can easily keep the project's codebase consistently formatted.
+
 ## Material Design (M3)
 This application aims to follow Google's Material Design 3 principles for its visual styling and user experience. This is achieved through custom CSS rules that implement M3's color system, typography, shape, elevation, and spacing guidelines.
 ---

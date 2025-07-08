@@ -1,6 +1,6 @@
 - id: 1
   scenario: >
-    Someone is interrupted or spoken over in a meeting
+    Someone is interrupted or spoken over
   advice: >
     Say: 'I'd like to hear what [interrupted person] was saying.'
     Or 'Hold on, let [interrupted person] finish their thought.'
