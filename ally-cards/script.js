@@ -1,53 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cardGridContainer = document.getElementById('card-grid-container');
-
-    if (!cardGridContainer) {
-        console.error('Card grid container not found!');
-        return;
-    }
-
-    // Ensure jsyaml is loaded
-    if (typeof jsyaml === 'undefined') {
-        console.error('js-yaml library not loaded. Make sure it is included in index.html before this script.');
-        // As a fallback, try to load it dynamically - though this is not ideal for production
-        // and has timing issues. The primary method should be the script tag in HTML.
-        const scriptTag = document.createElement('script');
-        scriptTag.src = 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js';
-        scriptTag.onload = loadAndRenderCards; // Try again once loaded
-        document.head.appendChild(scriptTag);
-        return;
-    }
-
     loadAndRenderCards();
 });
 
 function loadAndRenderCards() {
     const cardGridContainer = document.getElementById('card-grid-container');
-    if (!cardGridContainer) return; // Should have been checked already
+    if (!cardGridContainer) {
+        console.error('Card grid container not found!');
+        return;
+    }
 
-    fetch('assets/cards.yaml')
+    fetch('assets/cards.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status} while fetching cards.yaml`);
+                throw new Error(`HTTP error! status: ${response.status} while fetching cards.json`);
             }
-            return response.text();
+            return response.json();
         })
-        .then(yamlText => {
-            try {
-                const cards = jsyaml.load(yamlText);
-                if (cards && Array.isArray(cards)) {
-                    renderCards(cards);
-                } else {
-                    console.error('Failed to parse YAML or an empty/invalid structure was returned.');
-                    cardGridContainer.innerHTML = '<p>Error loading card data. The YAML file might be empty or malformed.</p>';
-                }
-            } catch (e) {
-                console.error('Error parsing YAML:', e);
-                cardGridContainer.innerHTML = `<p>Error parsing card data: ${e.message}. Please check the console and the YAML file format.</p>`;
+        .then(cards => {
+            if (cards && Array.isArray(cards)) {
+                renderCards(cards);
+            } else {
+                console.error('Failed to parse JSON or an empty/invalid structure was returned.');
+                cardGridContainer.innerHTML = '<p>Error loading card data. The JSON file might be empty or malformed.</p>';
             }
         })
         .catch(error => {
-            console.error('Error fetching or processing cards.yaml:', error);
+            console.error('Error fetching or processing cards.json:', error);
             cardGridContainer.innerHTML = `<p>Could not load cards: ${error.message}. Please check the network connection and file path.</p>`;
         });
 }
