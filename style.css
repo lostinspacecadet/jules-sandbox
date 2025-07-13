@@ -113,40 +113,29 @@ main {
     max-width: 1200px;
 }
 
-/* Card Styling */
+.card-wrapper {
+    perspective: 1200px;
+}
+
+.card-toggle {
+    display: none;
+}
+
 .card {
-    width: 290px; /* Slightly adjusted */
-    height: 380px; /* Slightly adjusted */
-    perspective: 1200px; /* Enhanced perspective */
-    cursor: pointer;
-    border-radius: var(--md-sys-shape-corner-medium); /* M3 Corner Radius */
-}
-
-.card:focus-visible { /* Accessibility: outline for keyboard focus */
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 2px;
-}
-
-
-.card-inner {
+    width: 290px;
+    height: 380px;
     position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); /* M3 Standard Easing */
     transform-style: preserve-3d;
-
-    /* M3 Elevation Level 1 */
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+    border-radius: var(--md-sys-shape-corner-medium);
     background-color: var(--md-sys-color-surface-container-low);
     box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
                 0px 1px 3px 1px rgba(var(--md-sys-color-shadow), 0.15);
-    border-radius: var(--md-sys-shape-corner-medium); /* Inherit from .card or set again */
 }
 
-.card.is-flipped .card-inner {
+.card-toggle:checked + label .card {
     transform: rotateY(180deg);
-    /* M3 Elevation Level 3 when flipped (example of dynamic elevation) */
-    box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
-                0px 2px 6px 2px rgba(var(--md-sys-color-shadow), 0.15);
 }
 
 .card-face {
@@ -158,7 +147,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 24px; /* M3 Spacing */
+    padding: 24px;
     box-sizing: border-box;
     text-align: center;
     border-radius: var(--md-sys-shape-corner-medium);
@@ -167,7 +156,7 @@ main {
 }
 
 .card-front {
-    /* Surface is defined by card-inner */
+    /* Surface is defined by card */
 }
 
 .card-back {
@@ -177,48 +166,37 @@ main {
 }
 
 .card-face p {
-    font-size: 1rem; /* M3 Body Large size: 16sp */
-    font-weight: 400; /* M3 Body Large weight */
-    line-height: 1.5rem; /* M3 Body Large line height: 24sp */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
     margin: 0;
 }
-
-/* Subtle active state for cards */
-.card:active .card-inner {
-    box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
-                0px 1px 3px 1px rgba(var(--md-sys-color-shadow), 0.15); /* Could reduce shadow slightly */
-    transform: translateY(1px); /* Slight press effect */
-}
-
 
 footer {
     margin-top: 48px;
     padding-top: 24px;
-    font-size: 0.875rem; /* M3 Label Large size: 14sp */
-    line-height: 1.25rem; /* M3 Label Large line height: 20sp */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     color: var(--md-sys-color-on-surface-variant);
 }
 
-
-/* Beta Tag Styling */
 .beta-tag {
-    font-size: 0.5em; /* M3 Label Small or similar */
+    font-size: 0.5em;
     font-weight: 500;
     color: var(--md-sys-color-on-primary-container);
     background-color: var(--md-sys-color-primary-container);
     padding: 2px 6px;
     border-radius: var(--md-sys-shape-corner-extra-small);
-    vertical-align: middle; /* Align with heading text */
+    vertical-align: middle;
     margin-left: 8px;
 }
 
-/* Advice Prompt Styling */
 .advice-prompt {
-    font-size: 1rem; /* M3 Body Large - making it same as card text for consistency in header */
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5rem;
     color: var(--md-sys-color-on-surface-variant);
-    margin-top: 8px; /* Space after the preceding paragraph */
-    margin-bottom: 24px; /* More space before main content starts if header ends here */
-    text-align: center; /* Explicitly set, though header inherits */
+    margin-top: 8px;
+    margin-bottom: 24px;
+    text-align: center;
 }
