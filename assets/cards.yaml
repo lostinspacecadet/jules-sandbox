@@ -1,0 +1,44 @@
+- id: 1
+  scenario: >
+    Someone is interrupted or spoken over
+  advice: >
+    Say: '[interrupted person], did you have more you wanted to say?'
+    Or 'Hold on, let [interrupted person] finish their thought.'
+
+- id: 2
+  scenario: >
+    A thoughtful concern is dismissed
+  advice: >
+    Say: '[Thoughtful person] made a compelling point, let's add this to
+    our decision register and capture the relevant risks or trade-offs.'
+
+- id: 3
+  scenario: >
+    An idea from one person is ignored, but later praised
+    when suggested by someone else
+  advice: >
+    Say: 'Thanks for surfacing that. I recall [original person] made
+    a similar point earlier. [Original person], did you want to elaborate?'
+
+- id: 4
+  scenario: >
+    A task is consistently assigned to people based on stereotypes
+  advice: >
+    Suggest a rotation system for such tasks. Or volunteer: for example, 'I can
+    take notes this time.'
+
+- id: 5
+  scenario: >
+    A meeting is taken over by a non-organiser, for their own agenda or benefit
+  advice: >
+    Say: 'I know [organiser] set this up for achieving [X outcome], let's
+    get back on track and set up a separate meeting/channel for [off-track Y
+    outcome].'
+
+- id: 6
+  scenario: >
+    A presenter or faciliator rushes through a check-in for questions or 
+    understanding, without giving space for considered input
+  advice: >
+    Gently interrupt with: 'Before we move on, could we pause for a moment? I'd
+    like to think this one through.'

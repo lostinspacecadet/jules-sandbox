@@ -1,0 +1,224 @@
+/* Global M3 Style Foundations */
+:root {
+    /* M3 Color Tokens (Light Theme Example) */
+    --md-sys-color-primary: #6750A4;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #EADDFF;
+    --md-sys-color-on-primary-container: #21005D;
+
+    --md-sys-color-secondary: #625B71;
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-secondary-container: #E8DEF8;
+    --md-sys-color-on-secondary-container: #1D192B;
+
+    --md-sys-color-tertiary: #7D5260;
+    --md-sys-color-on-tertiary: #FFFFFF;
+    --md-sys-color-tertiary-container: #FFD8E4;
+    --md-sys-color-on-tertiary-container: #31111D;
+
+    --md-sys-color-error: #B3261E;
+    --md-sys-color-on-error: #FFFFFF;
+    --md-sys-color-error-container: #F9DEDC;
+    --md-sys-color-on-error-container: #410E0B;
+
+    --md-sys-color-background: #FFFBFE; /* Slightly off-white, common for M3 apps */
+    --md-sys-color-on-background: #1C1B1F;
+
+    --md-sys-color-surface: #FFFBFE; /* Can be same as background or slightly different */
+    --md-sys-color-on-surface: #1C1B1F;
+    --md-sys-color-surface-variant: #E7E0EC;
+    --md-sys-color-on-surface-variant: #49454F;
+
+    --md-sys-color-outline: #79747E;
+    --md-sys-color-shadow: #000000;
+
+    /* M3 Surface Tones (Elevation) */
+    --md-sys-color-surface-container-lowest: #FFFFFF; /* Elevation 0 */
+    --md-sys-color-surface-container-low: #F7F2FA;    /* Elevation 1 */
+    --md-sys-color-surface-container: #F3EDF7;        /* Elevation 2 */
+    --md-sys-color-surface-container-high: #ECE6F0;   /* Elevation 3 */
+    --md-sys-color-surface-container-highest: #E6E0E9;/* Elevation 4 & 5 */
+
+    /* M3 Typography - Using system font stack with Roboto as preferred */
+    --md-sys-typescale-font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+    /* M3 Shape - Corner Radius */
+    --md-sys-shape-corner-none: 0px;
+    --md-sys-shape-corner-extra-small: 4px;
+    --md-sys-shape-corner-small: 8px;
+    --md-sys-shape-corner-medium: 12px;
+    --md-sys-shape-corner-large: 16px;
+    --md-sys-shape-corner-extra-large: 28px;
+    --md-sys-shape-corner-full: 50%; /* For circular elements */
+}
+
+/* Basic Body and M3 Font/Color Setup */
+body {
+    font-family: var(--md-sys-typescale-font-family);
+    margin: 0;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Or use M3 spacing tokens if defined */
+    box-sizing: border-box;
+    line-height: 1.5; /* M3 Body Large Line Height */
+}
+
+header, footer {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    margin-bottom: 40px; /* M3 Spacing, e.g. 5 * 8dp */
+}
+
+header h1 {
+    font-size: 2.75rem; /* M3 Display Small size: 44sp -> ~2.75rem */
+    font-weight: 400; /* M3 Display Small weight */
+    line-height: 3.25rem; /* M3 Display Small line height: 52sp */
+    color: var(--md-sys-color-primary); /* Using primary for main title */
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 1rem; /* M3 Title Medium size: 16sp */
+    font-weight: 500; /* M3 Title Medium weight */
+    line-height: 1.5rem; /* M3 Title Medium line height: 24sp */
+    color: var(--md-sys-color-on-surface-variant);
+    margin-top: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Ensure main content takes available space */
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px; /* M3 Spacing */
+    justify-content: center;
+    align-content: flex-start; /* Align items to the start of the container */
+    padding: 16px 0;
+    max-width: 1200px;
+}
+
+/* Card Styling */
+.card {
+    width: 290px; /* Slightly adjusted */
+    height: 380px; /* Slightly adjusted */
+    perspective: 1200px; /* Enhanced perspective */
+    cursor: pointer;
+    border-radius: var(--md-sys-shape-corner-medium); /* M3 Corner Radius */
+}
+
+.card:focus-visible { /* Accessibility: outline for keyboard focus */
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); /* M3 Standard Easing */
+    transform-style: preserve-3d;
+
+    /* M3 Elevation Level 1 */
+    background-color: var(--md-sys-color-surface-container-low);
+    box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
+                0px 1px 3px 1px rgba(var(--md-sys-color-shadow), 0.15);
+    border-radius: var(--md-sys-shape-corner-medium); /* Inherit from .card or set again */
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+    /* M3 Elevation Level 3 when flipped (example of dynamic elevation) */
+    box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
+                0px 2px 6px 2px rgba(var(--md-sys-color-shadow), 0.15);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px; /* M3 Spacing */
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: var(--md-sys-shape-corner-medium);
+    overflow-wrap: break-word;
+    color: var(--md-sys-color-on-surface);
+}
+
+.card-front {
+    /* Surface is defined by card-inner */
+}
+
+.card-back {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-tertiary-container);
+    transform: rotateY(180deg);
+}
+
+.card-face p {
+    font-size: 1rem; /* M3 Body Large size: 16sp */
+    font-weight: 400; /* M3 Body Large weight */
+    line-height: 1.5rem; /* M3 Body Large line height: 24sp */
+    margin: 0;
+}
+
+/* Subtle active state for cards */
+.card:active .card-inner {
+    box-shadow: 0px 1px 2px 0px rgba(var(--md-sys-color-shadow), 0.30),
+                0px 1px 3px 1px rgba(var(--md-sys-color-shadow), 0.15); /* Could reduce shadow slightly */
+    transform: translateY(1px); /* Slight press effect */
+}
+
+
+footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    font-size: 0.875rem; /* M3 Label Large size: 14sp */
+    line-height: 1.25rem; /* M3 Label Large line height: 20sp */
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+
+/* Beta Tag Styling */
+.beta-tag {
+    font-size: 0.5em; /* M3 Label Small or similar */
+    font-weight: 500;
+    color: var(--md-sys-color-on-primary-container);
+    background-color: var(--md-sys-color-primary-container);
+    padding: 2px 6px;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    vertical-align: middle; /* Align with heading text */
+    margin-left: 8px;
+}
+
+/* Advice Prompt Styling */
+.advice-prompt {
+    font-size: 1rem; /* M3 Body Large - making it same as card text for consistency in header */
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-top: 8px; /* Space after the preceding paragraph */
+    margin-bottom: 24px; /* More space before main content starts if header ends here */
+    text-align: center; /* Explicitly set, though header inherits */
+}
