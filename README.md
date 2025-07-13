@@ -10,30 +10,28 @@ This version focuses on a lightweight implementation without a JavaScript framew
 - Each card shows a scenario on the front
 - Clicking a card (or using Enter/Space when focused) flips it to reveal advice on the back, implemented with pure CSS animations
 - Styled according to Google's Material Design 3 (M3) guidelines using custom CSS
-- Card data is loaded dynamically from a `cards.json` file.
+- Card data is stored in a human-readable YAML file (`cards.yaml`) and compiled into a static HTML file.
 
 ## Technology Stack
 
 - **HTML5:** for content structure
 - **CSS3:** for styling and animations, adhering to M3 principles
-- **Pure JavaScript (ES6+):** for dynamic content loading, DOM manipulation, and interactions
 - **YAML:** for storing the card data in a human-readable format (`cards.yaml`)
-- **Node.js:** for a build step to convert YAML to JSON.
+- **Node.js:** for a build step to generate the static site.
 
 ## Project Structure
-All application files are located within the `ally-cards` directory:
--   `ally-cards/`
-    -   `index.html`: the main HTML file
-    -   `style.css`: contains all CSS rules, including M3 styling and card animations
-    -   `script.js`: handles fetching and parsing JSON data, and dynamically generating cards
-    -   `assets/`
-        -   `cards.yaml`: the YAML file containing the scenarios and advice for each card
-        -   `cards.json`: the generated JSON file used by the application
--   `build.js`: the build script to convert `cards.yaml` to `cards.json`
+-   `index.html`: the template for the main HTML file
+-   `style.css`: contains all CSS rules, including M3 styling and card animations
+-   `assets/`
+    -   `cards.yaml`: the YAML file containing the scenarios and advice for each card
+-   `build.js`: the build script to convert `cards.yaml` into a static `index.html`
+-   `dist/`: the output directory for the built site
+    - `index.html`: the generated HTML file
+    - `style.css`: the copied CSS file
 
 ## Development
 
-The card content is managed in `ally-cards/assets/cards.yaml`. To update the cards displayed on the website, you must run the build script to convert the YAML file to JSON.
+The card content is managed in `assets/cards.yaml`. To update the cards displayed on the website, you must run the build script.
 
 ### Prerequisites
 
@@ -50,11 +48,10 @@ The card content is managed in `ally-cards/assets/cards.yaml`. To update the car
    node build.js
    ```
 
-This will generate `ally-cards/assets/cards.json`, which is used by the website.
-
+This will generate the static site in the `dist/` directory.
 
 ## Setup and Running
-This project requires a build step to generate the `cards.json` file.
+This project requires a build step to generate the static site.
 
 **To run the application locally:**
 1.  **Clone the repository (if you haven't already):**
@@ -68,22 +65,22 @@ This project requires a build step to generate the `cards.json` file.
     node build.js
     ```
 3.  **Serving the files:**
-    For reliable local development, it's recommended to serve the files using a simple local HTTP server from the root of the repository or from the `ally-cards` directory. Here are a couple of easy ways:
+    For reliable local development, it's recommended to serve the files from the `dist/` directory. Here are a couple of easy ways:
     *   **Using Python (if installed):**
-        Navigate to the `ally-cards` directory in your terminal and run:
+        Navigate to the `dist` directory in your terminal and run:
         ```bash
         # If you have Python 3.x
         python -m http.server
         ```
         Then open your browser to `http://localhost:8000` (or the port indicated).
     *   **Using VS Code's "Live Server" Extension:**
-        If you use Visual Studio Code, you can install the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). Once installed, right-click on `ally-cards/index.html` in the VS Code explorer and choose "Open with Live Server".
+        If you use Visual Studio Code, you can install the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). Once installed, right-click on `dist/index.html` in the VS Code explorer and choose "Open with Live Server".
     *   **Using Node.js `serve` (if Node.js/npm is available):**
         You can install `serve` globally:
         ```bash
         npm install -g serve
         ```
-        Then, navigate to the `ally-cards` directory and run:
+        Then, navigate to the `dist` directory and run:
         ```bash
         serve .
         ```
@@ -91,7 +88,7 @@ This project requires a build step to generate the `cards.json` file.
 
 ## Card Data - `assets/cards.yaml`
 
-The content for the cards is stored in `ally-cards/assets/cards.yaml`. This file is designed to be human-readable and easy to edit.
+The content for the cards is stored in `assets/cards.yaml`. This file is designed to be human-readable and easy to edit.
 -   Each card is an item in a YAML list, starting with a hyphen (`-`).
 -   Each card has an `id`, `scenario`, and `advice`.
 -   Long strings for scenarios and advice can be wrapped for readability using YAML's folded (`>`) or literal (`|`) block styles.
