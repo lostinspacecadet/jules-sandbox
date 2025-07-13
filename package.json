@@ -1,4 +1,23 @@
 {
+  "name": "ally-cards",
+  "version": "0.1.0",
+  "description": "This project is a simple web application called Ally Cards designed to help people speak up in meetings",
+  "main": "build.js",
+  "type": "module",
+  "engines": {
+    "node": ">=24.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Laura Schaufelberger",
+    "url": "https://github.com/lostinspacecadet"
+  },
+  "license": "MIT",
+  "private": true,
   "dependencies": {
     "js-yaml": "^4.1.0"
   }

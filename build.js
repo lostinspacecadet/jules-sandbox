@@ -1,5 +1,5 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
+import fs from 'fs';
+import yaml from 'js-yaml';
 
 try {
     // Read the template files
