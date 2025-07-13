@@ -5,18 +5,15 @@ try {
     // Read the template files
     const templateHtml = fs.readFileSync('index.html', 'utf8');
     const cardTemplateHtml = `
-        <div class="card-wrapper">
-            <input type="checkbox" id="card-toggle-{{id}}" class="card-toggle" />
-            <label for="card-toggle-{{id}}">
-                <div class="card">
-                    <div class="card-face card-front">
-                        <p>{{scenario}}</p>
-                    </div>
-                    <div class="card-face card-back">
-                        <p>{{advice}}</p>
-                    </div>
+        <div class="card" tabindex="0">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <p>{{scenario}}</p>
                 </div>
-            </label>
+                <div class="card-face card-back">
+                    <p>{{advice}}</p>
+                </div>
+            </div>
         </div>
     `;
 
@@ -27,14 +24,13 @@ try {
     // Generate the card HTML
     const cardsHtml = cards.map(card => {
         return cardTemplateHtml
-            .replace(/{{id}}/g, card.id)
             .replace('{{scenario}}', card.scenario)
             .replace('{{advice}}', card.advice);
     }).join('');
 
     // Inject the cards into the main template
     const outputHtml = templateHtml.replace('<!-- Cards will be dynamically inserted here by JavaScript -->', cardsHtml)
-                                     .replace('<script src="flip.js" defer></script>', '');
+                                     .replace('<script src="script.js" defer></script>', '<script src="flip.js" defer></script>');
 
 
     // Create the output directory if it doesn't exist
@@ -45,8 +41,9 @@ try {
     // Write the final HTML file
     fs.writeFileSync('dist/index.html', outputHtml);
 
-    // Copy the CSS file
+    // Copy the CSS and JS files
     fs.copyFileSync('style.css', 'dist/style.css');
+    fs.copyFileSync('flip.js', 'dist/flip.js');
 
 
     console.log('Successfully built static site to dist/');
