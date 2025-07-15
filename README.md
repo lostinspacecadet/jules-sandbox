@@ -45,12 +45,13 @@ The card content is managed in `assets/cards.yaml`. To update the cards displaye
    ```
 2. Run the build script:
    ```bash
-   node build.js
+   npm run build
    ```
 
 This will generate the static site in the `dist/` directory.
 
 ## Setup and Running
+
 This project requires a build step to generate the static site.
 
 **To run the application locally:**
@@ -62,10 +63,15 @@ This project requires a build step to generate the static site.
 2.  **Install dependencies and run the build:**
     ```bash
     npm install
-    node build.js
+    npm run build
     ```
 3.  **Serving the files:**
-    For reliable local development, it's recommended to serve the files from the `dist/` directory. Here are a couple of easy ways:
+    For reliable local development, it's recommended to serve the files from the `dist/` directory. 
+    ``` bash
+    cd dist
+    ```
+    
+    Here are a couple of easy ways:
     *   **Using Python (if installed):**
         Navigate to the `dist` directory in your terminal and run:
         ```bash
